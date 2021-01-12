@@ -1,6 +1,7 @@
 <?php
 
 namespace Acd\Model\Mongodb;
+
 class Filter
 {
     public static function add($filters, $newFilter)
@@ -11,20 +12,19 @@ class Filter
     }
     public static function periodOfValidity($field, $date)
     {
-        if($date) {
+        if ($date) {
             $filter['$and'] = [
-                    ['$or' => [
-                            [$field.'.end' => ['$gte' => $date]],
-                            [$field.'.end' => '']
-                    ]],
-                    ['$or' => [
-                            [$field.'.start' => ['$lte' => $date]],
-                            [$field.'.start' => '']
-                    ]],
+                ['$or' => [
+                    [$field . '.end' => ['$gte' => $date]],
+                    [$field . '.end' => '']
+                ]],
+                ['$or' => [
+                    [$field . '.start' => ['$lte' => $date]],
+                    [$field . '.start' => '']
+                ]],
             ];
             return $filter;
-        }
-        else {
+        } else {
             return null;
         }
     }

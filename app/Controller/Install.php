@@ -1,4 +1,5 @@
 <?php
+
 namespace Acd\Controller;
 
 use \Acd\Model\SessionNavigation;
@@ -41,7 +42,6 @@ class Install
         // extra index in collections: content, authPermanent & relation
         $contentLoader = new ContentLoader();
         $userLoader = new UserLoader();
-
     }
     public function getTitle()
     {
@@ -57,17 +57,16 @@ class Install
     {
         switch ($this->getView()) {
             case $this::VIEW_INFO:
-                $ou = new \ACD\View\InstallInfo();
+                $ou = new \Acd\View\InstallInfo();
                 $contentLoader = new ContentLoader();
                 $ou->addCollectionIndexes($contentLoader->getIndexes());
                 $userLoader = new UserLoader();
                 $ou->addCollectionIndexes($userLoader->getIndexes());
                 break;
-
         }
 
         $this->sessionNavigation->push([
-            'hash' => 'install - '.$this->getView(), // Page hash, consecutive same hash no add navigation
+            'hash' => 'install - ' . $this->getView(), // Page hash, consecutive same hash no add navigation
             'url' => $this->requestUrl,
             'title' => $this->getTitle()
         ]);
