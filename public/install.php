@@ -10,41 +10,25 @@ session_start();
 
 if(!RolPermissionHttp::checkUserEditor([\Acd\conf::$ROL_DEVELOPER])) die();
 
-@$action = $_GET['a'];
-switch ($action) {
-	case 'edit':
-		$action = Controller\User::VIEW_DETAIL;
-		break;
-	case 'new':
-		$action = Controller\User::VIEW_DETAIL_NEW;
-		break;
-	default:
-		$action = Controller\User::VIEW_LIST;
-		break;
-}
-@$id = $_GET['id'];
+$action = Controller\Install::VIEW_INFO;
 @$result = $_GET['r'];
 
-
-/* TODO: Revisar */
-$userController = new Controller\User();
-$userController->setView($action);
-$userController->setRequestUrl($_SERVER["REQUEST_URI"]); // For history back
-$userController->setId($id);
-$userController->load();
+$installController = new Controller\Install();
+$installController->setView($action);
+$installController->setRequestUrl($_SERVER["REQUEST_URI"]); // For history back
+$installController->load();
 try {
-	$sContent = $userController->render();
+	$sContent = $installController->render();
 } catch (\Exception $e) {
 	header("HTTP/1.0 404 Not Found");
-	$sContent  = "404 element not found.";
+    $sContent = "404 element not found.";
 }
-/* FIN TODO: Pendiente */
 
 $skeletonOu = new View\BaseSkeleton();
-$skeletonOu->setBodyClass('user');
+$skeletonOu->setBodyClass('install');
 
-$skeletonOu->setHeadTitle($userController->getTitle());
-$skeletonOu->setHeaderMenu($userController->getHeaderMenuOu()->render());
+$skeletonOu->setHeadTitle($installController->getTitle());
+$skeletonOu->setHeaderMenu($installController->getHeaderMenuOu()->render());
 
 $toolsOu = new View\Tools();
 $toolsOu->setLogin($_SESSION['login']);
