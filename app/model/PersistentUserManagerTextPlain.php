@@ -85,7 +85,7 @@ class PersistentUserManagerTextPlain implements iPersistentUserManager
     }
     private function saveAll($allUsers)
     {
-        $path = \Acd\conf::$PATH_AUTH_CREDENTIALS_FILE;
+        $path = \ACD\conf::$PATH_AUTH_CREDENTIALS_FILE;
         $aData = array();
         foreach ($allUsers as $user) {
             $aData[$user->getId()] = $user->tokenizeData();

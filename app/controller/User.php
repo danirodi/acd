@@ -108,12 +108,12 @@ class User
     {
         switch ($this->getView()) {
             case $this::VIEW_LIST:
-                $ou = new \Acd\View\UserList();
+                $ou = new \ACD\View\UserList();
                 $ou->setUserList($this->getContentUser());
                 break;
             case $this::VIEW_DETAIL:
                 if ($this->getContentUser()->getId()) {
-                    $ou = new \Acd\View\UserDetail();
+                    $ou = new \ACD\View\UserDetail();
                     $ou->setUserElement($this->getContentUser());
                     $ou->setAuthPermanentList($this->getContentAuthPermanent());
                 } else {
@@ -121,7 +121,7 @@ class User
                 }
                 break;
             case $this::VIEW_DETAIL_NEW:
-                $ou = new \Acd\View\UserDetail();
+                $ou = new \ACD\View\UserDetail();
                 $emptyCollection = new UserDo();
                 $ou->setUserElement($emptyCollection);
                 break;

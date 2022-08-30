@@ -1,25 +1,17 @@
 <?php
 namespace Acd;
 
+use \Acd\Controller\RolPermissionHttp;
+
 require('../autoload.php');
 
 ini_set('session.gc_maxlifetime', conf::$SESSION_GC_MAXLIFETIME);
 session_start();
 
-if (!Model\Auth::isLoged()) {
-    $action = 'login';
-    header('Location: index.php?re='.urlencode($_SERVER["REQUEST_URI"]));
-    return;
-} else {
-    if ($_SESSION['rol'] == 'editor') {
-        header('HTTP/1.0 403 Forbidden');
-        echo 'Unauthorized, only admin can show this section.';
-        die();
-    } else {
-        $action = Controller\Install::VIEW_INFO;
-        @$result = $_GET['r'];
-    }
-}
+if(!RolPermissionHttp::checkUserEditor([\Acd\conf::$ROL_DEVELOPER])) die();
+
+$action = Controller\Install::VIEW_INFO;
+@$result = $_GET['r'];
 
 $installController = new Controller\Install();
 $installController->setView($action);
@@ -29,7 +21,7 @@ try {
 	$sContent = $installController->render();
 } catch (\Exception $e) {
 	header("HTTP/1.0 404 Not Found");
-    $sContent  = "404 element not found.";
+    $sContent = "404 element not found.";
 }
 
 $skeletonOu = new View\BaseSkeleton();

@@ -57,7 +57,7 @@ class Install
     {
         switch ($this->getView()) {
             case $this::VIEW_INFO:
-                $ou = new \Acd\View\InstallInfo();
+                $ou = new \ACD\View\InstallInfo();
                 $contentLoader = new ContentLoader();
                 $ou->addCollectionIndexes($contentLoader->getIndexes());
                 $userLoader = new UserLoader();

@@ -100,19 +100,19 @@ class Enumerated
 	{
 		switch ($this->getView()) {
 			case $this::VIEW_LIST:
-				$ou = new \Acd\View\EnumeratedList();
+				$ou = new \ACD\View\EnumeratedList();
 				$ou->setEnumeratedList($this->getContent());
 				break;
 			case $this::VIEW_DETAIL:
 				if ($this->getContent()->getId()) {
-					$ou = new \Acd\View\EnumeratedDetail();
+					$ou = new \ACD\View\EnumeratedDetail();
 					$ou->setEnumeratedElement($this->getContent());
 				} else {
 					throw new \Exception('Enumerated collection not found', 404);
 				}
 				break;
 			case $this::VIEW_DETAIL_NEW:
-				$ou = new \Acd\View\EnumeratedDetail();
+				$ou = new \ACD\View\EnumeratedDetail();
 				$emptyCollection = new EnumeratedDo();
 				$ou->setEnumeratedElement($emptyCollection);
 				break;

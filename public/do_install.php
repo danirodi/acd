@@ -1,8 +1,17 @@
 <?php
+
 namespace Acd;
-require ('../autoload.php');
+
+require('../autoload.php');
+
 use \Acd\Model\ContentLoader;
 use \Acd\Model\UserLoader;
+use \Acd\Controller\RolPermissionHttp;
+
+ini_set('session.gc_maxlifetime', conf::$SESSION_GC_MAXLIFETIME);
+session_start();
+
+if (!RolPermissionHttp::checkUserEditor([\Acd\conf::$ROL_DEVELOPER])) die();
 
 switch($_POST['a']) {
     case 'Create DB indexes':

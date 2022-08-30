@@ -9,7 +9,7 @@ class PersistentStructureManagerTextPlain implements iPersistentStructureManager
 {
 	public function loadAll()
 	{
-		$path = \Acd\conf::$DATA_PATH;
+		$path = \ACD\conf::$DATA_PATH;
 		$content = file_get_contents($path);
 		//+d(json_decode($content, true));
 		return json_decode($content, true);
@@ -29,7 +29,7 @@ class PersistentStructureManagerTextPlain implements iPersistentStructureManager
 	}
 	public function save($structuresDo)
 	{
-		$path = \Acd\conf::$DATA_PATH;
+		$path = \ACD\conf::$DATA_PATH;
 		/* Construct the json */
 		$data = $structuresDo->tokenizeData();
 		$tempPath = $path . '.tmp';

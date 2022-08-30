@@ -40,7 +40,7 @@ class content extends \PHPUnit_Framework_TestCase
 	{
 		$cl = new Model\ContentLoader();
 		$cl->setId('programa_tv');
-		$content = new \Acd\Model\ContentDo();
+		$content = new \ACD\Model\ContentDo();
 		$content->setIdStructure($cl->getId());
 		$content->setData('Título', 'el campo Título');
 		$content->setData('Destacada', 'el campo Destacada');
@@ -55,9 +55,9 @@ class content extends \PHPUnit_Framework_TestCase
 	public function testUpdataContent()
 	{
 		// Save
-		$cl = new \Acd\Model\ContentLoader();
+		$cl = new \ACD\Model\ContentLoader();
 		$cl->setId('programa_tv');
-		$content = new \Acd\Model\ContentDo();
+		$content = new \ACD\Model\ContentDo();
 		$content->setIdStructure($cl->getId());
 		$content->setId('id-fer');
 		$content->setData('Título', 'el campo Título');
@@ -73,10 +73,10 @@ class content extends \PHPUnit_Framework_TestCase
 	public function testDeleteContent()
 	{
 		// Delete
-		$cl = new \Acd\Model\ContentLoader();
+		$cl = new \ACD\Model\ContentLoader();
 		$cl->setId('programa_tv');
 
-		$content = new \Acd\Model\ContentDo();
+		$content = new \ACD\Model\ContentDo();
 		$content->setIdStructure($cl->getId());
 		$content->setId('id-demo');
 		$content->setData('Título', 'El campo Título');

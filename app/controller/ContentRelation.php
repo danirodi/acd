@@ -130,7 +130,7 @@ class ContentRelation
 	}
 	public function render()
 	{
-		$contentOu = new \Acd\View\ContentEditSearch();
+		$contentOu = new \ACD\View\ContentEditSearch();
 		$contentOu->setId($this->getIdParent());
 		$contentOu->setType($this->getIdStructureTypeParent());
 		$contentOu->setIdField($this->getIdField());
@@ -140,7 +140,7 @@ class ContentRelation
 		$contentOu->setStructureTypeSeach($this->getIdStructureTypeSearch());
 
 		if ($this->getAction() === 'search') {
-			$contentLoader = new \Acd\Model\ContentLoader();
+			$contentLoader = new \ACD\Model\ContentLoader();
 			$contentLoader->setId($this->getIdStructureTypeSearch());
 			$whereCondition = [];
 			if ($this->getTitleSearch()) {
